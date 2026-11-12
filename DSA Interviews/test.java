@@ -2,29 +2,34 @@ import java.util.Arrays;
 
 public class test {
     public static void main(String[] args) {
-        int[] arr = {1, 1, 1, 1, 2, 2, 2, 2, 2};
-        int result = findMajority(arr);
+        int arr[] = {3, 1, 2, 2, 3, 3, 3};
+        int result = findTarget(arr);
         System.out.println(result);
     }
-    private static int findMajority(int[] arr) {
-        Arrays.sort(arr);
-        int n = arr.length;
 
-        if(n==0){
-            return arr[0];
-        }
+    public static int findTarget (int[] nums){
+        int ans = 0;
+        int count = 0;
 
-        int count = 1;
-
-        for(int i=1; i<n; i++){
-            if(arr[i] == arr[i-1]){
+        for (int i=0; i < nums.length; i++){
+            if (count == 0){
+                ans = nums[i];
+            }
+            if(ans == nums[i]){        // If the ans is equal to our current ans;
                 count++;
             } else {
-                count = 1;
+                count--;
             }
-            if (count > n/2){
-                return arr[i];
+        }
+        int n = nums.length;
+        int verify = 0;
+        for(int i : nums){
+            if(ans == i){
+                verify++;
             }
+        }
+        if (verify > n/2){
+            return ans;
         }
         return -1;
     }
