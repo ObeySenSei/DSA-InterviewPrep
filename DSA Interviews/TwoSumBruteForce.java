@@ -23,9 +23,17 @@ public class TwoSumBruteForce {
             for (int j = i + 1; j < nums.length; j++) {      // Inner loop picks the second number
                 if (nums[i] + nums[j] == target) {
                     return new int[] { i, j };               // returns the indexes ;  for values use   return new int[] {arr[i],arr[j]}
+
                 }
             }
         }
         throw new IllegalArgumentException("No two sum solution found");
     }
 }
+
+/**
+
+  return new int[] { i, j };
+  This creates a new integer array (int[]) containing two elements: i and j.
+
+ */

@@ -2,29 +2,26 @@ import java.util.Arrays;
 
 public class test {
     public static void main(String[] args) {
-
-        int [] arr = {3,4,5,6};
-        int target = 7;
-        int length = arr.length;
-        int[] result = findTarget(arr,target,length);
-        System.out.println(Arrays.toString(result));
-
-        int [] arr1 = {7,8,9,10};
-        int target1 = 15;
-        int[] result1 = findTarget(arr1,target1,length);
-        System.out.println(Arrays.toString(result1));
-
-
+        int arr[] = {1,1,1,2,2,1,1};
+        int result = findElement(arr);
+        System.out.println(result);
     }
-    public static int[] findTarget (int[] arr, int target, int length){
+    public static int findElement(int[] arr){
 
-        for (int i = 0; i<length; i++){
-            for(int j = i+1; j<length; j++){
-                if(arr[i] + arr[j] == target){
-                    return new int[] {i,j};
+        for(int i=0; i<arr.length; i++){
+            int count = 0;
+            for(int j=0; j<arr.length; j++) {
+                if (arr[j] == arr[i]) {
+                    count++;
                 }
             }
+            if(count > arr.length/2){             //  If 4 is greater than 3    i.e (7/2), then
+                return arr[i];                     //  return that value that appeard 4 times.
+
+            }
         }
-        return new int[] {-1,-1};
+        return -1;
     }
 }
+
+
