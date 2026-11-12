@@ -16,14 +16,13 @@ public class TwoSumBruteForce {
 
     }
 
-    // Method to find the indices using brute force
-    public static int[] twoSum(int[] nums, int target) {
+    public static int[] twoSum(int[] nums, int target) {     // Method to find the indices using brute force
 
         for (int i = 0; i < nums.length; i++) {              // Outer loop picks the first number
 
             for (int j = i + 1; j < nums.length; j++) {      // Inner loop picks the second number
-                if (nums[i] + nums[j] == target) {           // Check if the pair adds up to the target
-                    return new int[] { i, j };
+                if (nums[i] + nums[j] == target) {
+                    return new int[] { i, j };               // returns the indexes ;  for values use   return new int[] {arr[i],arr[j]}
                 }
             }
         }

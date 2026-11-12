@@ -12,6 +12,7 @@ public class TwoSumTwoPointer {
         int right = nums.length - 1;
 
         while (left < right) {
+
             int currentSum = nums[left] + nums[right];
 
             if (currentSum == target) {
