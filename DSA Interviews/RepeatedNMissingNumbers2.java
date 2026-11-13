@@ -18,7 +18,7 @@ public class RepeatedNMissingNumbers2 {
         Set<Integer> set = new HashSet<>();
 
         int n = grid.length;
-        int a = -1, b = -1;                 // a = repeated, b = missing
+        int a = 0, b;                 // a = repeated, b = missing
 
         int actualSum = 0;
 
@@ -47,3 +47,13 @@ public class RepeatedNMissingNumbers2 {
         return new int[]{a, b};
     }
 }
+
+/**
+
+ Why initialize a?
+ int a = 0;
+
+ Because a is used inside the loop, and although the loop is expected to find a duplicate,
+ Java cannot guarantee that the if condition will execute.
+ Initializing it to 0 ensures it has a value before use.
+ */
