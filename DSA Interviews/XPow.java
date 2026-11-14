@@ -40,7 +40,7 @@ public class XPow {
 
 /**
 
- By copying $n$ into a long variable (long binForm = n;), you upgrade the container from a small box (32-bit)
+ By copying n into a long variable (long binForm = n;), you upgrade the container from a small box (32-bit)
  to a massive warehouse (64-bit).A long can easily hold numbers way past 2 billion.
  So, when you flip -2,147,483,648 into a positive number, the long container has plenty of room to store
  +2,147,483,648  safely without any overflow crashes.
