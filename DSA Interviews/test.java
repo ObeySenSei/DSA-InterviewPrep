@@ -1,27 +1,31 @@
 
 public class test {
     public static void main(String[] args) {
-        int arr[] = {3, 1, 3, 4, 2};            // [0,1,2,3,4] visualize the indices like this.  Linked List [0,3,4,2,3].
-        int result = findDuplicate(arr);
-        System.out.println("Duplicate Element: " + result);
+        System.out.println(findPower(2.0,5));
     }
+    public static double findPower (double x, int n){
+        if (n==0) return 1.0;
+        if (x==0) return 0.0;
+        if (x==1) return 1.0;
+        if (x==-1 && n%2==0) return 1.0;
+        if (x==-1 && n%2!=0) return -1.0;
 
-    private static int findDuplicate(int[] arr) {
-        int slow = arr[0];
-        int fast = arr[0];
+        long power = n;             // to handle interger overflow edge case
 
-        do {
-            slow = arr[slow];
-            fast = arr[arr[fast]];
-
-        } while (slow != fast);
-
-        fast = arr[0];
-        while(slow != fast){
-            slow =arr[fast];
-            fast = arr[fast];
+        if (power < 0){
+            x = 1 / x;
+            power = - power;
         }
+        double ans = 1;
+        double base = x;
 
-        return slow;
+        while (power > 0){
+            if (power % 2 == 1){
+                ans = ans * base;
+            }
+            base = base * base;
+            power = power / 2;
+        }
+        return ans;
     }
 }
