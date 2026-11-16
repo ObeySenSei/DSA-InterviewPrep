@@ -3,27 +3,35 @@ import java.util.*;
 public class ThreeSumHashing {
     public static void main(String[] args) {
         int[] arr = {-1, 0, 1, 2, -1, -4};
-        System.out.println(threeSum(arr));
+        Set<List<Integer>> result = threeSum(arr);
+        System.out.println(result);
+
     }
-
     public static Set<List<Integer>> threeSum(int[] arr){
-        Set<List<Integer>> result = new HashSet<>();           //  Create a HashSet to store unique triplets. Each triplet is stored as a List of three integers.
+        Set<List<Integer>> list = new HashSet<>();
 
-        for(int i=0; i<arr.length; i++){
-            Set<Integer> hashset = new HashSet<>();        // Its job is to temporarily store numbers encountered during the inner loop..Each time the j loop finishes, the hashset RESETS itself to empty.
+        for(int i=0;i< arr.length; i++){
+            Set<Integer> hashset = new HashSet<>();   /// Stores previously visited elements to check whether the required third number exists and completes the triplet.
 
             for(int j=i+1; j<arr.length; j++){
-                int thirdNum = - (arr[i] + arr[j]);       // Calculate the required third element so that nums[i] + nums[j] + third = 0
+                int third = - (arr[i] + arr[j]);       // Calculate the required third element so that nums[i] + nums[j] + third = 0
 
-                if (hashset.contains(thirdNum)){
-                    List<Integer> triplet = Arrays.asList(arr[i],arr[j],thirdNum);   // Store the three elements in a List.
+                if(hashset.contains(third)){
+                    //Create another list to store the triplets
+                    List<Integer> triplets = Arrays.asList(arr[i],arr[j],third);   ///  Arrays.asList() creates a List containing the three supplied elements in exactly the order they are passed. (Sequentially)
 
-                    Collections.sort(triplet);     // We sort the triplet into a consistent order so that equivalent triplets have the same arrangement.
-                    result.add(triplet);               // HashSet automatically prevents duplicate triplets
+                    Collections.sort(triplets);         /// We sort the list to avoid duplicates
+                    list.add(triplets);                    ///  And after sorting we remove the Elements. list.add(triplets) inserts the sorted triplet into the HashSet.If an identical triplet already exists, the HashSet simply rejects the duplicate.
                 }
-                hashset.add(arr[j]);                  // It adds one element at a time, to check whether the required third number  exists. And this hashsets resets after j loops ends. That is in when i become 1 - arr[1].arr[2] etc.
-            }
+
+                hashset.add(arr[j]);    /// the HashSet will contain all the elements from [0, 1, 2, -1, -4] for the first iteration i. These values will be used to compare if the third number exists.
+            }                          /// the HashSet stores these elements one by one during the inner loop. The HashSet contains only previously visited elements of the inner loop, ensuring that all three numbers in a triplet come from distinct array indices.
         }
-        return result;
+        return list;
     }
 }
+/*
+
+hashset.add(arr[j]);
+That's why we check first and add afterward.
+ */
