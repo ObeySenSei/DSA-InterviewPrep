@@ -7,7 +7,7 @@ public class MergeSortedArray{
         int[] nums2 = {2, 5, 6};
         int n = 3;
 
-        int[] result = mergeArray(nums1,m,nums2,n);
+        int[] result = mergeArray(nums1,m,nums2,n);     ///  We are assigning the returned array reference to result. NOT creating a new array. Both variables point to the same array in memory.
         System.out.println(Arrays.toString(result));
     }
     public static int[] mergeArray(int[] nums1, int m, int[] nums2, int n) {
