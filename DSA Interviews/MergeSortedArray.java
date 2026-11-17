@@ -1,7 +1,6 @@
 import java.util.Arrays;
 public class MergeSortedArray{
     public static void main(String[] args) {
-
         int[] nums1 = {1, 2, 3, 0, 0, 0};
         int m = 3;
 
@@ -13,9 +12,10 @@ public class MergeSortedArray{
     }
     public static int[] mergeArray(int[] nums1, int m, int[] nums2, int n) {
 
-        int i = m - 1;         // Last valid element of nums1
-        int j = n - 1;         // Last element of nums2
-        int k = m + n - 1;     // Last position of nums1
+        // Initialize your 3 pointers
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
 
         // Compare elements from the end
         while (i >= 0 && j >= 0) {
@@ -23,15 +23,15 @@ public class MergeSortedArray{
             if (nums1[i] > nums2[j]) {
                 nums1[k] = nums1[i];
                 i--;
-            } else {                           //  else if (nums1[i] <= nums2[j]) Basically, the element from nums2 is copied
+            } else {                     // This loop executes if nums1[i] <= nums2[j]. Basically, the Element from nums2 is copied
                 nums1[k] = nums2[j];
                 j--;
             }
 
-            k--;                     // irrespective of whichever operation is performed, we have to decrement k.
+            k--;                         // irrespective of whichever operation is performed, we have to decrement k.
         }
 
-        while (j >= 0) {             // If nums is exhausted that is  i = -1, Copy remaining elements of nums2  into nums1.
+        while (j >= 0) {                 // If nums is exhausted that is  i = -1, Copy remaining elements of nums2  into nums1.
             nums1[k] = nums2[j];
             j--;
             k--;
