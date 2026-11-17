@@ -24,7 +24,7 @@ public class Search2DArrayTwoStageBinarySearch {
             int midRow = startR + (endR - startR) / 2;
             if (target >= arr[midRow][0] && target <= arr[midRow][lastCol]) {
 
-                // Target lies within this row: Binary Search on Columns    (Middle Row)
+                // Target lies within this row: Binary Search on Columns.  This statement is executed once we have found our correct Row.
                 return binarySearchRow(arr,midRow,target);
 
             } else if (target > arr[midRow][lastCol]) {                // Target lies in the Row Below
