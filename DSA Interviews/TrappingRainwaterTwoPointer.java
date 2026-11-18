@@ -20,17 +20,17 @@ public class TrappingRainwaterTwoPointer {
             if (arr[left] < arr[right]) {
 
                 if (arr[left] >= leftMax) {
-                    leftMax = arr[left];
+                    leftMax = arr[left];       /// if this statement is executed, the else statement won't be executed for this run !! it will be executed in the next iteration
                 } else {
                     totalCapacity = totalCapacity + leftMax - arr[left];
                 }
-                left++;
+                left++;                        /// this will execute nonetheless.
             }
 
             else {
 
                 if (arr[right] >= rightMax) {
-                    rightMax = arr[right];
+                    rightMax = arr[right];         //
                 } else {
                     totalCapacity = totalCapacity + rightMax - arr[right];
                 }
