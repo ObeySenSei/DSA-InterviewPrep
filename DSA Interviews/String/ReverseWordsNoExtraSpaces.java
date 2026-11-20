@@ -1,3 +1,5 @@
+package String;
+
 public class ReverseWordsNoExtraSpaces {
     public static void main(String[] args) {
         String s = "JAVA IS  FUN";
@@ -33,7 +35,7 @@ public class ReverseWordsNoExtraSpaces {
             }
 
             // Step 3: Reverse individual word
-            if (word.length() > 0) {         // We cannot reverse a word if the SB Word is Empty.
+            if (word.length() > 0) {         // We cannot reverse a word if the SB Word is Empty.  or use (!word.isEmpty()).
                 word.reverse();
 
                 if (ans.length() > 0) {      // We cannot afford to put a ' ' at the start. Only add space after the end of each word.
