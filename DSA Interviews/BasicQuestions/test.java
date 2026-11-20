@@ -1,37 +1,38 @@
 package BasicQuestions;
 
+import java.util.Arrays;
+
 public class test {
     public static void main(String[] args) {
-        String s = "JAVA IS  FUN";
-        String result = reverseWords(s);
+        char[] ch = {'a', 'b', 'b', 'c', 'c', 'c'};    // Characters are denoted by single inverted comma.  [a,b,2,c,3]
+        int result = stringCompression(ch);
         System.out.println(result);
+        System.out.println(Arrays.toString(Arrays.copyOf(ch,result)));
     }
+    public static int stringCompression(char [] ch){
 
-    public static String reverseWords(String s) {
-        StringBuilder sb = new StringBuilder(s);
-        sb.reverse();
+        int i = 0;
+        int cI = 0;
 
-        StringBuilder ans = new StringBuilder();  // to store our ans
-        int start = 0;
+        while (i<ch.length) {
+            int currentCount = 0;
+            char currentChar = ch[i]; // let us set the first character as 'a'
 
-        while(start < sb.length()) {
-            while (start < sb.length() && sb.charAt(start) == ' ') {
-                start++;   // skip if we encounter a space or continuous spaces.
+            while (i < ch.length && ch[i] == currentChar) {
+                currentCount++;
+                i++;
             }
-            StringBuilder word = new StringBuilder();
-            while (start < sb.length() && sb.charAt(start) != ' ') {
-                word.append(sb.charAt(start));
-                start++;
-            }
+            // The moment this loops finishes executing, it places the values along with their count, if its greater than 1.
+            ch[cI] = currentChar;
+            cI++;
 
-            if (word.length() > 0) {   // we want to avoid reversing if word is empty
-                word.reverse();
-            if (ans.length() > 0) {
-                ans.append(" ");     // Add a space after the end of each word.
+            if (currentCount > 1) {
+                for (char digit : String.valueOf(currentCount).toCharArray()) {
+                    ch[cI] = digit;
+                    cI++;
                 }
-            ans.append(word);
             }
         }
-        return ans.toString();
+        return cI;
     }
 }
