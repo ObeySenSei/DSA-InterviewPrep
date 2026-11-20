@@ -23,6 +23,7 @@ public class ReverseWord {
 
 
  Repeated String concatenation can take O(n²) time because new strings are repeatedly created and copied.
+ We are repeatedly creating new String objects using +.
  StringBuilder is generally O(n) for this operation.
 
  */
