@@ -3,32 +3,35 @@ package BasicQuestions;
 public class test {
     public static void main(String[] args) {
         String s = "JAVA IS  FUN";
-        reverseWord(s);
+        String result = reverseWords(s);
+        System.out.println(result);
     }
-    public static void reverseWord(String s){
-        StringBuilder sb = new StringBuilder();
-        for (int i=s.length()-1; i>=0; i--){
-            sb.append(s.charAt(i));                // s points to where - points to the charAt(i)
-        }
 
+    public static String reverseWords(String s) {
+        StringBuilder sb = new StringBuilder(s);
+        sb.reverse();
+
+        StringBuilder ans = new StringBuilder();  // to store our ans
         int start = 0;
 
-        for (int i=0; i<=sb.length(); i++){
-            if(i == sb.length() || sb.charAt(i) == ' '){
-            int left = start;
-            int right = i - 1;
-
-            while (left < right){
-                char temp = sb.charAt(left);
-                sb.setCharAt(left, sb.charAt(right));
-                sb.setCharAt(right, temp);
-
-                left++;
-                right--;
+        while(start < sb.length()) {
+            while (start < sb.length() && sb.charAt(start) == ' ') {
+                start++;   // skip if we encounter a space or continuous spaces.
             }
-            start = i+1;
+            StringBuilder word = new StringBuilder();
+            while (start < sb.length() && sb.charAt(start) != ' ') {
+                word.append(sb.charAt(start));
+                start++;
+            }
+
+            if (word.length() > 0) {   // we want to avoid reversing if word is empty
+                word.reverse();
+            if (ans.length() > 0) {
+                ans.append(" ");     // Add a space after the end of each word.
+                }
+            ans.append(word);
             }
         }
-        System.out.println(sb);
+        return ans.toString();
     }
 }

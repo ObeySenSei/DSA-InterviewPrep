@@ -15,7 +15,7 @@ public class ReverseWordsSB {
         }
 
         // Step 2: Reverse individual words
-        int start = 0;                        // Start value is incremented after every encounter of a " ".
+        int start = 0;                        // Start value is incremented after every encounter of a whitespace " " or when we reach the end of the String.
 
         for (int i = 0; i <= sb.length(); i++) {
 
