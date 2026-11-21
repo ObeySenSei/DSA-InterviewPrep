@@ -1,50 +1,49 @@
 package StackNQueue;
 
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-public class test {
+public class test{
     public static void main(String[] args) {
-        MyStack stack = new MyStack();
 
-        stack.push(3);
-        stack.push(2);
-        stack.push(1);
-        stack.top();
-        stack.pop();
-        stack.pop();
-        stack.pop();
-        stack.empty();
+        MyQueue queue = new MyQueue();
+        queue.push(3);
+        queue.push(2);
+        queue.push(1);
 
-        Queue<Integer> q1 = new LinkedList<>();
-        Queue<Integer> q2 = new LinkedList<>();
+        System.out.println(queue.peek());
+        System.out.println(queue.pop());
+        System.out.println(queue.pop());
+        System.out.println(queue.pop());
 
+        System.out.println(queue.empty());
+
+    }
+}
 class test1{
 
-    public void push(int x){
-        while (!q1.isEmpty()){
-            q2.offer(q1.poll());
+    Stack<Integer> s1 = new Stack<>();
+    Stack<Integer> s2 = new Stack<>();
+
+    public void push(int x) {
+        while(!s1.empty()){
+            s2.push(s1.pop());    // Remove elements from s1 and paste it to s2.
         }
-        q1.offer(x);
-        while(!q2.isEmpty()){
-            q1.offer(q2.poll());
+        s1.push(x);               // Else just insert the element if my Stack is empty
+
+        while(!s2.isEmpty()){
+            s1.push(s2.pop());
         }
+    }
+    public int pop1 (int x){
+        return s1.pop();
+    }
+    public int peek1(int x){
+        return s1.peek();
+    }
+    public boolean empty1(){
+        return s1.isEmpty();
 
     }
-    public int pop(){
-        return q1.poll();
-    }
-    public int top(){
-        return q1.peek();
-    }
-    public boolean empty(){
-        return q1.isEmpty();
-    }
 
-
-}
-
-
-    }
 }

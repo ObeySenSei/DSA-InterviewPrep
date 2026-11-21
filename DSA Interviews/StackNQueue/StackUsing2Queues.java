@@ -51,3 +51,8 @@ class MyStack {
         return q1.isEmpty();
     }
 }
+/*
+ Queue insert operations involve the keyword          : offer
+ Queue delete and past operations involve the keyword : poll
+
+ */
