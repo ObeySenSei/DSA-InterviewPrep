@@ -1,49 +1,33 @@
 package StackNQueue;
 
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
-public class test{
+public class test {
     public static void main(String[] args) {
+        String str = "level";
 
-        MyQueue queue = new MyQueue();
-        queue.push(3);
-        queue.push(2);
-        queue.push(1);
+        Queue<Integer> q = new LinkedList<>();
+        Map<Character,Integer> hashmap = new HashMap<>();
 
-        System.out.println(queue.peek());
-        System.out.println(queue.pop());
-        System.out.println(queue.pop());
-        System.out.println(queue.pop());
+        for(int i=0; i<str.length(); i++){
+            char ch = str.charAt(i);
 
-        System.out.println(queue.empty());
+            if(hashmap.containsKey(ch)){
+                hashmap.put(ch,hashmap.get(ch) + 1);   // increment the already found character for the key
+            } else {
+                hashmap.put(ch,1);
+            }
+            q.offer(i);     // Insert the index no. into the queue
 
-    }
-}
-class test1{
-
-    Stack<Integer> s1 = new Stack<>();
-    Stack<Integer> s2 = new Stack<>();
-
-    public void push(int x) {
-        while(!s1.empty()){
-            s2.push(s1.pop());    // Remove elements from s1 and paste it to s2.
+            while(!q.isEmpty() && hashmap.get(str.charAt(q.peek())) > 1){
+                q.poll();
+            }
         }
-        s1.push(x);               // Else just insert the element if my Stack is empty
-
-        while(!s2.isEmpty()){
-            s1.push(s2.pop());
+        if(q.isEmpty()){
+            System.out.println(-1);  // no valid character was found
+        } else {
+            System.out.println(q.peek());   // return the index of the element at the front of the queue after all the remove operations
         }
-    }
-    public int pop1 (int x){
-        return s1.pop();
-    }
-    public int peek1(int x){
-        return s1.peek();
-    }
-    public boolean empty1(){
-        return s1.isEmpty();
 
     }
-
 }

@@ -35,3 +35,12 @@ public class ValidParenthesis {
         return st.isEmpty();    ///  or st.size()==0;   Both check whether the stack contains zero elements.
     }
 }
+/*
+
+ We return as st.isEmpty() instead of return True; because there might still be unmatched opening brackets.
+
+ Consider: String str = "(((";
+ We push all three opening brackets onto the stack.
+ It never encounters a closing bracket, so it never returns false inside the loop.
+
+ */
