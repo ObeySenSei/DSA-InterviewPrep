@@ -34,13 +34,17 @@ public class test {
             colSum = colSum + arr[i] [candidate];
         }
 
-       if (rowSum == 0 && candidate == n-1){
+       if (rowSum == 0 && colSum == n-1){
            System.out.println(candidate);
        } else {
            System.out.println(-1);
        }
     }
 }
+
+/**
+
+ */
 
 
 

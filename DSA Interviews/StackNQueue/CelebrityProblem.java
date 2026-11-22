@@ -44,7 +44,7 @@ public class CelebrityProblem {
         }
 
         if (rowSum == 0 && colSum == n - 1) {
-            System.out.println(candidate);
+            System.out.println(candidate);      // This row arr[0] is the Celebrity
         } else {
             System.out.println(-1);
         }
@@ -58,5 +58,8 @@ public class CelebrityProblem {
     {0, 0, 1, 0},
     {1, 0, 0, 1},
     {0, 0, 0, 0}
+
+ One more interview edge case: If n == 0, your code would throw an exception at stack.pop().
+ You can handle that with an initial empty-matrix check if the problem allows an empty matrix.
 
  */
