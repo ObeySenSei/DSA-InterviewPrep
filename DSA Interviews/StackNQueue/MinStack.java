@@ -1,13 +1,13 @@
 package StackNQueue;
 import java.util.Stack;
-
+                                     /// Design a Minimum Stack using 2 Stacks
 public class MinStack {
 
     Stack<Integer>stack = new Stack<>();
     Stack<Integer> minStack = new Stack<>();
 
     public void push(int value){
-        stack.push(value);             /// Push the current element to stack
+        stack.push(value);                                 /// Push the current element to stack
 
         if(minStack.isEmpty() || value <= minStack.peek()){    /// Insert elements when either minStack is empty or value of the element is less than the current top element in minStack.
             minStack.push(value);
