@@ -22,17 +22,17 @@ public class CelebrityProblem {
         // Eliminate people until only one candidate remains
         while (stack.size() > 1) {
 
-            int a = stack.pop();
-            int b = stack.pop();
+            int a = stack.pop();       // Set the top element as A
+            int b = stack.pop();       // Set the element below it as B
 
-            if (M[a][b] == 1) {
+            if (M[a][b] == 1) {        //  If A knows B, A cannot be the celeb, so push B.
                 stack.push(b);
             } else {
                 stack.push(a);
             }
         }
 
-        int candidate = stack.pop();
+        int candidate = stack.pop();     // Set the Element that remains (index value here) on the stack as the potential candidate.
 
         // Verify the remaining candidate
         int rowSum = 0;
@@ -50,3 +50,13 @@ public class CelebrityProblem {
         }
     }
 }
+
+/*
+ Also try this :
+
+    {0, 1, 0, 1},
+    {0, 0, 1, 0},
+    {1, 0, 0, 1},
+    {0, 0, 0, 0}
+
+ */

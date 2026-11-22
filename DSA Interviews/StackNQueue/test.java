@@ -4,30 +4,45 @@ import java.util.*;
 
 public class test {
     public static void main(String[] args) {
-        String str = "level";
+        int[][] arr = {
+                {0, 1, 0},
+                {0, 0, 0},
+                {0, 1, 0}
+        };
 
-        Queue<Integer> q = new LinkedList<>();
-        Map<Character,Integer> hashmap = new HashMap<>();
+        int n = arr.length;
+        Stack <Integer> stack = new Stack<>();
 
-        for(int i=0; i<str.length(); i++){
-            char ch = str.charAt(i);
+        for(int i=0;i <n; i++){
+            stack.push(i);
+        }
+        while(stack.size() > 1 ){
+            int a = stack.pop();
+            int b = stack.pop();
 
-            if(hashmap.containsKey(ch)){
-                hashmap.put(ch,hashmap.get(ch) + 1);   // increment the already found character for the key
-            } else {
-                hashmap.put(ch,1);
-            }
-            q.offer(i);     // Insert the index no. into the queue
-
-            while(!q.isEmpty() && hashmap.get(str.charAt(q.peek())) > 1){
-                q.poll();
+            if(arr[a][b] == 1){
+                stack.push(b);
+            }else{
+                stack.push(a);
             }
         }
-        if(q.isEmpty()){
-            System.out.println(-1);  // no valid character was found
-        } else {
-            System.out.println(q.peek());   // return the index of the element at the front of the queue after all the remove operations
+        int candidate = stack.pop();
+        int rowSum = 0;
+        int colSum = 0;
+        for (int i=0; i<n; i++){
+            rowSum = rowSum + arr[candidate][i];
+            colSum = colSum + arr[i] [candidate];
         }
 
+       if (rowSum == 0 && candidate == n-1){
+           System.out.println(candidate);
+       } else {
+           System.out.println(-1);
+       }
     }
 }
+
+
+
+
+
