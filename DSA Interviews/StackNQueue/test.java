@@ -3,49 +3,47 @@ package StackNQueue;
 import java.util.*;
 
 public class test {
+    Stack<Integer>stack = new Stack<>();
+    Stack<Integer> minStack = new Stack<>();
+
+    public void push(int value){
+        stack.push(value);             /// Push the current element to stack
+
+        if(minStack.isEmpty() || value <= minStack.peek()){    /// Insert elements when either minStack is empty or value of the element is less than the current top element in minStack.
+           minStack.push(value);
+        }
+    }
+    public void pop (){
+        int recent = stack.pop();        // Using a variable to compare the recently removed element from Stack.
+
+        if(recent == minStack.peek()){
+            minStack.pop();              // Only then, remove the same element from both Stack and minStack.  Say 3 is present in Stack but in minStack only 1 is preset, and since only one element is present, no need to perform pop() operation in minStack.
+        }
+    }
+    public int top(){
+        return stack.peek();
+    }
+    public int getMin(){
+        return minStack.peek();
+    }
+
     public static void main(String[] args) {
-        int[][] arr = {
-                {0, 1, 0},
-                {0, 0, 0},
-                {0, 1, 0}
-        };
 
-        int n = arr.length;
-        Stack <Integer> stack = new Stack<>();
+        test stack = new test();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.pop();
 
-        for(int i=0;i <n; i++){
-            stack.push(i);
-        }
-        while(stack.size() > 1 ){
-            int a = stack.pop();
-            int b = stack.pop();
+        System.out.println(stack.top());
+        System.out.println(stack.getMin());
 
-            if(arr[a][b] == 1){
-                stack.push(b);
-            }else{
-                stack.push(a);
-            }
-        }
-        int candidate = stack.pop();
-        int rowSum = 0;
-        int colSum = 0;
-        for (int i=0; i<n; i++){
-            rowSum = rowSum + arr[candidate][i];
-            colSum = colSum + arr[i] [candidate];
-        }
+        stack.pop();
 
-       if (rowSum == 0 && colSum == n-1){
-           System.out.println(candidate);
-       } else {
-           System.out.println(-1);
-       }
+        System.out.println(stack.top());
+        System.out.println(stack.getMin());
     }
 }
-
-/**
-
- */
-
 
 
 
