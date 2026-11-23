@@ -16,7 +16,7 @@ public class LargestRectangleHistogram {
         for (int i = 0; i < n; i++) {
 
             while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {        // Stack operation is performed first    Basically we are comparing the previous element with our current element by the use of index reference inside our stack. pse[stack.peek()] >= pse[i]/
-                  ///  is 2 > = 1 ?  So remove from stack.
+                /// height[0] value: 2 > 1 = true; so we Pop because we only need the boundary of the smaller element.
                 stack.pop();
             }
 
@@ -33,8 +33,8 @@ public class LargestRectangleHistogram {
         /// Next Smaller Element        (Monotonic Increasing Stack, Right to Left)   since NSE - PSE
         for (int i = n - 1; i >= 0; i--) {
 
-            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {     // Is 3 >= 2. Yes, So Pop.
-                stack.pop();
+            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
+                stack.pop();              // 2 > 1 = true; so we Pop because we only need the boundary of the smaller element.
             }
             if (stack.isEmpty()) {
                 nse[i] = n;               /// If no valid boundary is found, assign n (length of array)
@@ -45,7 +45,7 @@ public class LargestRectangleHistogram {
             stack.push(i);
         }
 
-        /// Calculate maximum area
+
         int maxArea = 0;
 
         for (int i = 0; i < n; i++) {
