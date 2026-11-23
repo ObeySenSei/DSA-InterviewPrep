@@ -1,50 +1,26 @@
 package StackNQueue;
-
 import java.util.*;
 
 public class test {
-    Stack<Integer>stack = new Stack<>();
-    Stack<Integer> minStack = new Stack<>();
-
-    public void push(int value){
-        stack.push(value);             /// Push the current element to stack
-
-        if(minStack.isEmpty() || value <= minStack.peek()){    /// Insert elements when either minStack is empty or value of the element is less than the current top element in minStack.
-           minStack.push(value);
-        }
-    }
-    public void pop (){
-        int recent = stack.pop();        // Using a variable to compare the recently removed element from Stack.
-
-        if(recent == minStack.peek()){
-            minStack.pop();              // Only then, remove the same element from both Stack and minStack.  Say 3 is present in Stack but in minStack only 1 is preset, and since only one element is present, no need to perform pop() operation in minStack.
-        }
-    }
-    public int top(){
-        return stack.peek();
-    }
-    public int getMin(){
-        return minStack.peek();
-    }
-
     public static void main(String[] args) {
+        int[] prices = {100, 80, 60, 70, 60, 75, 85};
+        int[] streak = new int[prices.length];
 
-        test stack = new test();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.pop();
+        Stack<Integer>stack = new Stack<>();
 
-        System.out.println(stack.top());
-        System.out.println(stack.getMin());
+        for(int i=0; i< prices.length; i++) {
 
-        stack.pop();
+                stack.pop();          // We pop that index value from our stack if the value of that index is less.
+            }
+            if(stack.isEmpty()){        // When my stack is empty or no Previous Greater Element exists,
+                streak[i] = i + 1;
+            } else {
+                streak[i] = i - stack.peek();     // Say 6-0 = 6;
+            }
+            stack.push(i);                   /// Gotta push that element onto the stack regardless.
+        }
+        System.out.println(Arrays.toString(streak));
 
-        System.out.println(stack.top());
-        System.out.println(stack.getMin());
+
     }
 }
-
-
-
-
