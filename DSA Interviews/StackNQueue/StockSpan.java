@@ -4,12 +4,10 @@ import java.util.*;
 public class StockSpan {
 
     public static void main(String[] args) {
-
         int[] prices = {100, 80, 60, 70, 60, 75, 85};
 
         int[] span = new int[prices.length];            // Create a resultant array to display final output
         Stack<Integer> stack = new Stack<>();           // Create a stack to store indices.
-
 
         for (int i = 0; i < prices.length; i++) {       //Our streak will continue even if the elements are of same value <=
 
