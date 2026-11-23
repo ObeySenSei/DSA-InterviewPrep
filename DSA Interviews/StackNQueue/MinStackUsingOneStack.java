@@ -65,4 +65,21 @@ public class MinStackUsingOneStack {
 }
 /**
   Push -> Pop -> Top -> getMin
+
+
+ We return 2 because it is the actual top element, while 1 is merely its encoded representation stored in the stack.
+
+
+ For example, after pushing 5, 3, 7, 2:
+    Stack: [5, 1, 7, 1]
+    minVal = 2
+ When we call top(): if (stack.peek() < minVal) {
+ return minVal;
+
+ stack.peek() = 1 (encoded value)
+ minVal = 2 (actual original value)
+ 1 < 2 → true
+ Return 2.
+
+
  */
